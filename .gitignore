@@ -128,3 +128,4 @@ dmypy.json
 .idea
 .idea/
 device_manage_main/migrations/0001_initial.py
+device_manage_main/设备一览表.xlsx
