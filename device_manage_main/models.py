@@ -77,3 +77,60 @@ class DeviceDetail(models.Model):
         verbose_name = "设备详情"
         verbose_name_plural = "设备详情"
         ordering = ["id"]
+
+class CalibrationRecord(models.Model):
+
+    '''
+    设备校准记录表单，每一台设备校准一次都需要在该表单内记录信息
+    默认将最后一次校准信息返回
+    查询历史校准信息
+    '''
+
+    device_name = models.ForeignKey("DeviceList", on_delete=models.CASCADE, verbose_name="设备名称")
+
+    def __str__(self):
+        name = self.device_name.device_id + " " + self.device_name.device_name
+        return name
+
+    class Meta:
+        verbose_name = "校准记录"
+        verbose_name_plural = "校准记录"
+        # ordering = ["id"]
+
+class RepairRecord(models.Model):
+
+    '''
+    设备维修记录表单，每一台设备维修一次都需要在该表单内记录信息
+    默认将最后一次维修信息返回
+    查询历史维修信息
+    '''
+
+    device_name = models.ForeignKey("DeviceList", on_delete=models.CASCADE, verbose_name="设备名称")
+
+    def __str__(self):
+        name = self.device_name.device_id + " " + self.device_name.device_name
+        return name
+
+    class Meta:
+        verbose_name = "维修记录"
+        verbose_name_plural = "维修记录"
+        # ordering = ["id"]
+
+class ServerRecord(models.Model):
+
+    '''
+    设备维护记录表单，每一台设备维护一次都需要在该表单内记录信息
+    默认将最后一次维护信息返回
+    查询历史维护信息
+    '''
+
+    device_name = models.ForeignKey("DeviceList", on_delete=models.CASCADE, verbose_name="设备名称")
+
+    def __str__(self):
+        name = self.device_name.device_id + " " + self.device_name.device_name
+        return name
+
+    class Meta:
+        verbose_name = "维护记录"
+        verbose_name_plural = "维护记录"
+        # ordering = ["id"]
