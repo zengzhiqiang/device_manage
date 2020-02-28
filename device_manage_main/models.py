@@ -134,3 +134,4 @@ class ServerRecord(models.Model):
         verbose_name = "维护记录"
         verbose_name_plural = "维护记录"
         # ordering = ["id"]
+
