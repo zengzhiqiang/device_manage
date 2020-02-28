@@ -2,6 +2,13 @@ from django.db import models
 
 # Create your models here.
 
+'''
+设备清单 DeviceList
+设备详情 DeviceDetail
+设备校准记录 
+设备维护记录 
+设备维修记录 
+'''
 
 class DeviceList(models.Model):
     '''设备基本信息，包含设备在运行过程中不发生改变的属性'''
@@ -33,7 +40,8 @@ class DeviceList(models.Model):
     start_date = models.DateField(auto_now=True, verbose_name="启用日期")
 
     def __str__(self):
-        return self.device_id
+        name = self.device_id + " " + self.device_name
+        return name
 
     class Meta:
         verbose_name = "设备清单"
@@ -62,7 +70,8 @@ class DeviceDetail(models.Model):
     remarks = models.TextField("备注")
 
     def __str__(self):
-        return self.device_name.device_name
+        name = self.device_name.device_id + " " + self.device_name.device_name
+        return name
 
     class Meta:
         verbose_name = "设备详情"

@@ -25,26 +25,11 @@ class DeviceViewSet(viewsets.ModelViewSet):
     serializer_class = DeviceSerializer
 
 class DeviceDetailViewSet(viewsets.ModelViewSet):
+
     queryset = DeviceDetail.objects.all()
     serializer_class = DeviceDetailSerializer
 
 class DeviceSearchView(APIView):
-
-    # def get_like_str(self, search_str):
-    #     '''获取包含搜索字符串的相关列表'''
-    #     like_str = []
-    #     device_name_list = DeviceList.objects.values_list("device_name")
-    #     # print(device_name_list)
-    #     device_id_list = DeviceList.objects.values_list("device_id")
-    #     for device_name in device_name_list:
-    #         if search_str in device_name[0]:
-    #             if device_name[0] not in like_str:
-    #                 like_str.append(device_name[0])
-    #     for device_id in device_id_list:
-    #         if search_str in device_id[0]:
-    #             if device_id[0] not in like_str:
-    #                 like_str.append(device_id[0])
-    #     return like_str
 
     def get_devices(self, search_str):
         '''在设备名称中搜索相关名称'''
@@ -59,6 +44,7 @@ class DeviceSearchView(APIView):
         devices = self.get_devices(search_str)
         devices_serializers = DeviceSerializer(devices, many=True)
         return Response(devices_serializers.data)
+
 
 # if __name__ == "__main__":
 #
